@@ -180,10 +180,13 @@ Comet ML proporciona una interfaz interactiva donde se pueden analizar los resul
 
 La pestaña panels presenta todas las gráficas interactivas donde se puede observar y analizar el comportamiento de las métricas registradas en todo el proceso del entrenamiento tal como se muestra en la siguiente imagen:
 
+![imagen 2](imagenes/panels.PNG)
+
 Una de las ventajas de Comet ml es que permite agregar panels personalizados donde se puede visualizar las métricas de preferencia del usuario como se ve en la siguiente imagen:
 
-Esto es útil si se quiere visualizar y/o comparar métricas simultaneas como la pérdida del conjunto de entrenamiento y validación.
+![imagen 3](imagenes/opcion.PNG)
 
+Esto es útil si se quiere visualizar y/o comparar métricas simultaneas como la pérdida del conjunto de entrenamiento y validación.
 
 # Integrantes del proyecto
 
