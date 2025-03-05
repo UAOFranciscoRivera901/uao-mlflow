@@ -12,6 +12,16 @@ El repositorio incluye diversos scripts para cada una de las funciones de las pl
 # Tabla de contenido
 - [Introducción](#introducción)
  - [Phishing](#Phishing)
+ - [Dataset](#Dataset)
+- [Estructura del repositorio](#Estructura-del-repositorio)
+- [Archivos del repositorio](#archivos-del-repositorio)
+    - [comet/comet_logger.py](#comet/comet_logger-py)
+    - [comet/train.py](#comet/train-py) 
+    - [ml_flow/callbacks.py](#ml_flow/callbacks-py)  
+    - [ml_flow/evaluate.py](#ml_flow/evaluate-py)
+    - [config.py](#config-py)
+    - [data.py](#data-py)
+    - [model.py](#model-py) 
   
 # Introducción
 ## Phishing
@@ -66,7 +76,6 @@ A nivel general, la estructura del proyecto es la siguiente:
     - comet/ Almacena toda la lógica relacionada con la plataforma Comet-ML.
     - ml_flow/ Almacena toda la lógica relacionada con la plataforma MLflow.
     - Scripts .py que contienen funcionalidad generica para ambas plataformas.
-- test/ Almacena las pruebas unitarias del proyecto.
 
 2. Archivos en la raíz del proyecto:
 - gitignore: Define los archivos y carpetas que deben ser ignorados en el control de versiones con Git.
