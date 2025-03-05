@@ -2,7 +2,7 @@ import sys
 import os
 
 # Añadir comlet/src al path de Python
-sys.path.append(os.path.abspath("comlet/src"))
+sys.path.append(os.path.abspath("src/comlet"))
 
 from train import entrenar_modelo
 
