@@ -243,7 +243,11 @@ Para cerrar la aplicación, simplemente debe cerrar la pestaña del navegador.
 
 En la terminal, presionar Ctrl + C para detener la ejecución.
 
-
+Bibliografía
+https://anderfernandez.com/blog/tutorial-mlflow-completo/
+https://www.comet.com/site/
+https://www.toolify.ai/es/ai-news-es/una-gua-para-ingenieros-de-ia-sobre-el-monitoreo-de-modelos-con-la-plataforma-comet-ml-1966252
+https://www.incibe.es/aprendeciberseguridad/phishing
 
 # Integrantes del proyecto
 
