@@ -11,30 +11,44 @@ El repositorio incluye diversos scripts para cada una de las funciones de las pl
 
 # Tabla de contenido
 - [Introducción](#introducción)
- - [Pishing](#Pishing)
+ - [Phishing](#Phishing)
   
  
 # Introducción
-## Pishing
+## Phishing
 
 El phishing es un tipo de ciberataque basado en ingeniería social, en el cual los atacantes utilizan correos electrónicos, mensajes de texto o sitios web fraudulentos para engañar a las personas y robar información confidencial, como contraseñas, datos bancarios o credenciales de acceso.
 Para prevenir estos ataques, es posible aplicar análisis de URLs y patrones de comportamiento mediante técnicas de inteligencia artificial y aprendizaje automático. Estas estrategias permiten detectar actividades sospechosas y bloquear posibles amenazas antes de que los usuarios sean víctimas del fraude.
 
 ## Dataset 
 
-el dataset utilizado....
+El dataset Phishing URL (https://huggingface.co/datasets/pirocheto/phishing-url) consta de un total de 11430 registros, donde cada registro tiene 89 columnas y la última de ellas es la variable objetivo llamada "status" con dos posibles valores que son: legitimate y/o phishing. Con este dataset es posible entrenar un modelo de Machine Learning con el fin de determinar si una página es phising o es legítima.
+
+Las columnas o características del dataset corresponden a tres clases diferentes que son:
+
+- 56 características son extraídas de la estructura y sintaxis de las URL.
+- 24 características son extraídas del contenido de sus páginas correspondientes.
+- 7 características son extraídas consultando servicios externos.
+
+Es importante aclarar que la característica URL no se tendrá en cuenta en el estudio porque se han extraído 56 características a partir de la estructura y sintaxis de las URL tales como longitud, número de subdominios, uso de caracteres sospechosos, entonces no sería necesario la URL completa en el dataset, ayudando a evitar que el modelo dependa de información irrelevante o difícil de procesar directamente.
+
+El dataset proporcionado por Hugging Face ya tiene dividido los datos de tal manera que las dos terceras partes de los datos, que equivale a 7658 registros son datos de entrenamiento. El otro tercerio de datos que equivale a 3772 registros son datos de prueba.
+
+Hablando del tipo de datos de las características se observa que la mayoría de los datos son numéricos, a excepción de las características URL y de la variable objetivo status que contiene dos posibles valores que son: legitimate y/o phishing. Además, el dataset está completo ya que no presenta valores vacíos o nulos.
+
+Por último y no menos importante, se indica que el dataset está balanceado ya que contiene el 50% de los datos pertenecientes al estado legítimo y la otra mitad de los datos corresponden a phising.
 
 ## Modelo clasificación de URLs
 
 El modelo de clasificación elegido fue una red neuronal multicapa (MLP) debido a su capacidad para aprender patrones complejos y generalizar el conocimiento en datos de alta dimensión. Su adaptabilidad le permite ajustarse a cambios en la información, mejorando su rendimiento frente a nuevas amenazas de phishing. Además, su habilidad para manejar grandes volúmenes de datos contribuye a reducir el número de falsas detecciones, asegurando un sistema robusto y eficiente en la identificación de URLs maliciosas.
 
-la estructura de la red es la siguiente
+La estructura de la red es la siguiente
 
 ![imagen 1](imagenes/estructura_red.PNG)
 
-los parametros utilizados son:
+Los parametros utilizados son:
 
-- Neuronas:64
+- Neuronas: 64
 - Activación: Relu
 - Optimizer: RMSprop
 - Epochs: 10
@@ -52,3 +66,9 @@ A nivel general, la estructura del proyecto es la siguiente:
 
 2. Comlet
 
+# Integrantes del proyecto
+
+- Francisco Javier Rivera Rozo
+- Carlos Armando Daza Rendón
+- Andrés Felipe Coral
+- Alejandro Sánchez Murillo
