@@ -29,6 +29,7 @@ el dataset utilizado....
 El modelo de clasificación elegido fue una red neuronal multicapa (MLP) debido a su capacidad para aprender patrones complejos y generalizar el conocimiento en datos de alta dimensión. Su adaptabilidad le permite ajustarse a cambios en la información, mejorando su rendimiento frente a nuevas amenazas de phishing. Además, su habilidad para manejar grandes volúmenes de datos contribuye a reducir el número de falsas detecciones, asegurando un sistema robusto y eficiente en la identificación de URLs maliciosas.
 
 la estructura de la red es la siguiente
+
 ![imagen 1](imagenes/estructura_red.PNG)
 
 los parametros utilizados son:
