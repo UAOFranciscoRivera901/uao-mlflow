@@ -2,7 +2,7 @@ import comet_ml
 import tensorflow as tf
 from tensorflow.keras.callbacks import Callback
 from comet_logger import iniciar_experimento
-from data import cargar_datos
+from src.data import cargar_datos
 from src.model import crear_modelo
 from src.config import PARAMS
 from sklearn.metrics import confusion_matrix

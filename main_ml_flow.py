@@ -1,7 +1,7 @@
 import mlflow
 import psutil
 from mlflow.models import infer_signature
-from src.data_preprocessing import cargar_datos
+from src.data import cargar_datos
 from src.model import crear_modelo
 from src.ml_flow.callbacks import MLflowCallback
 from src.config import PARAMS
@@ -19,7 +19,7 @@ def entrenar_modelo(modelo, X_train, y_train, X_test, y_test):
 
 def main():
     """Función principal que ejecuta el pipeline de entrenamiento y evaluación."""
-    X_train, y_train, X_test, y_test = cargar_datos()
+    X_train, X_test, y_train, y_test = cargar_datos()
     
     mlflow.set_experiment("phishing-detections")
     with mlflow.start_run():
