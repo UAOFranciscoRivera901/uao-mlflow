@@ -13,7 +13,6 @@ El repositorio incluye diversos scripts para cada una de las funciones de las pl
 - [Introducción](#introducción)
  - [Phishing](#Phishing)
   
- 
 # Introducción
 ## Phishing
 
@@ -62,9 +61,50 @@ A nivel general, la estructura del proyecto es la siguiente:
 
 1. Directorios principales:
 
-- Images/ Contiene las imágenes utilizadas en el proyecto.
+- imagenes/ Contiene las imágenes utilizadas en el proyecto.
+- src (source)/ Contiene el código fuente del proyecto, organizado en los siguientes subdirectorios:
+    - comet/ Almacena toda la lógica relacionada con la plataforma Comet-ML.
+    - ml_flow/ Almacena toda la lógica relacionada con la plataforma MLflow.
+    - Scripts .py que contienen funcionalidad generica para ambas plataformas.
+- test/ Almacena las pruebas unitarias del proyecto.
 
-2. Comlet
+2. Archivos en la raíz del proyecto:
+- gitignore: Define los archivos y carpetas que deben ser ignorados en el control de versiones con Git.
+- main_comet.py: Archivo principal que sirve como punto de entrada para ejecutar Comet-ML.
+- main_ml_flow.py: Archivo principal que sirve como punto de entrada para ejecutar MLflow.
+- README.md: Documento con información detallada sobre el uso y configuración del proyecto.
+- requirements.txt: Lista de dependencias de Python necesarias para la ejecución del proyecto.
+- LICENSE.txt: Contiene la licencia del proyecto, especificando los términos de uso y distribución del código.
+
+# Archivos del repositorio
+
+## comet/comet_logger.py
+
+Este script maneja la configuración inicial de Comet-ML para iniciar el experimento que requiere datos como api_key, project_name y workspace.
+
+## comet/train.py
+
+Este script contiene toda la parametrización necesaria y requerida por Comet-ML para poder iniciar con el experimento, estableciendo las métricas que se harán seguimiento, carga de datos, carga del modelo y Callbacks para realizar los cálculos de las métricas durante el entrenamiento del modelo a través del tiempo y poder realizar las gráficas.
+
+## ml_flow/callbacks.py
+
+Este script establece las métricas como accuracy y precisión que se harán seguimiento en MLflow después de cada época.
+
+## ml_flow/evaluate.py
+
+Este script contiene funciones para evaluar el modelo, calcular las métricas y generar la matriz de confusión.
+
+## config.py
+
+Este script aloja las credenciales para acceder a Comet-ML, además de tener los parámetros de la Red Neuronal Artificial tales como cantidad de neuronas, función de activación, optimizador, etc. Centralizar la configuración en este archivo facilita la modificación y mantenimiento del sistema sin afectar otros módulos.
+
+## data.py
+
+Este script contiene la función para cargar los datos desde Hugging Face, de tal manera que separa los datos de entrenamiento y de prueba. Al tener este archivo con una única responsabilidad, cuando sea necesario cambiar la fuente de datos, solo se necesitaría modificar este archivo.
+
+## model.py
+
+Este script contiene la función para crear el modelo, en este caso una Red Neuronal Artificial con dos capas ocultas. Al separar esta funcionalidad, se garantiza un mejor desacoplamiento del sistema, permitiendo reutilizar el modelo en diferentes partes de la aplicación.
 
 # Integrantes del proyecto
 
