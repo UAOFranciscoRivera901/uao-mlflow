@@ -1,10 +1,8 @@
 comet_ml==3.49.4
-datasets>=3.3.2,<4.0.0  # Actualizar si es compatible
+datasets==3.3.2
 pandas==2.2.3
-scikit-learn==1.4.1  # 1.6.1 no existe aún
+scikit-learn==1.6.1
 tensorflow==2.18.0
 mlflow==2.20.3
 matplotlib==3.10.1
 seaborn==0.13.2
-psutil==5.9.8  # Para monitoreo del sistema
-protobuf==4.25.3  # Requerido por TensorFlow

@@ -1,11 +1,11 @@
 import mlflow
 import psutil
 from mlflow.models import infer_signature
-from src.data_preprocessing import cargar_datos
-from src.model import crear_modelo
-from src.callbacks import MLflowCallback
-from src.config import PARAMS
-from src.evaluate import evaluar_modelo, guardar_matriz_confusion
+from ml_flow.src.data_preprocessing import cargar_datos
+from ml_flow.src.model import crear_modelo
+from ml_flow.src.callbacks import MLflowCallback
+from ml_flow.src.config import PARAMS
+from ml_flow.src.evaluate import evaluar_modelo, guardar_matriz_confusion
 
 def entrenar_modelo(modelo, X_train, y_train, X_test, y_test):
     """Entrena el modelo y registra métricas en MLflow."""
