@@ -1,5 +1,5 @@
 from comet_ml import Experiment
-from config import API_KEY, EXPERIMENT_NAME, WORKSPACE
+from src.config import API_KEY, EXPERIMENT_NAME, WORKSPACE
 
 def iniciar_experimento():
     experiment = Experiment(

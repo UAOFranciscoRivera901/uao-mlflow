@@ -1,10 +1,10 @@
 import mlflow
 import psutil
 from mlflow.models import infer_signature
-from src.ml_flow.data_preprocessing import cargar_datos
-from src.ml_flow.model import crear_modelo
+from src.data_preprocessing import cargar_datos
+from src.model import crear_modelo
 from src.ml_flow.callbacks import MLflowCallback
-from src.ml_flow.config import PARAMS
+from src.config import PARAMS
 from src.ml_flow.evaluate import evaluar_modelo, guardar_matriz_confusion
 
 def entrenar_modelo(modelo, X_train, y_train, X_test, y_test):
