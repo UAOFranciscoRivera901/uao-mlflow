@@ -237,11 +237,11 @@ También se observan los resultados registrados como se indica en la siguiente i
 
 ![imagen 5](imagenes/registro.PNG)
 
-## Paso 6: Cerrar la aplicación
+## Paso 3: Cerrar la aplicación
 
 Para cerrar la aplicación, simplemente debe cerrar la pestaña del navegador.
 
-En la terminal, presionar Ctrl + C para detener la ejecución de Streamlit.
+En la terminal, presionar Ctrl + C para detener la ejecución.
 
 
 
