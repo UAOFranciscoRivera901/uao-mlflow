@@ -121,7 +121,7 @@ Este script contiene la función para crear el modelo, en este caso una Red Neur
 
 # Requerimientos para usar el monitoreo del modelo
 
-Para ejecutar correctamente el monitoreo del modelo de un modelo de red neuronal, siga los siguientes pasos:
+Para ejecutar correctamente el monitoreo del modelo de red neuronal, siga los siguientes pasos:
 
 1. Se debe clonar la información del repositorio uao-neumonia  el cual se encuentra en el siguiente enlace https://github.com/UAOFranciscoRivera901/uao-mlflow
 2. Asegúrate de tener Python instalado en tu ordenador. Se recomienda usar la versión Python 3.12.2
@@ -135,6 +135,55 @@ Para ejecutar correctamente el monitoreo del modelo de un modelo de red neuronal
 - No olvides seleccionar el archivo requirements.txt. Este archivo contiene todas las bibliotecas y dependencias necesarias para el funcionamiento correcto del proyecto.
   
 # Uso de las plataformas especializadas en seguimiento y optimización de modelos de machine learning
+
+## Comet ML
+
+Comet ML es una plataforma diseñada para rastrear, comparar y optimizar modelos y experimentos de aprendizaje automático. Permite registrar métricas y parámetros durante el entrenamiento y supervisarlos de manera interactiva a través de su interfaz web.
+
+ Para iniciar el experimento (entrenamiento del modelo) siga los siguientes pasos:
+
+ ## Paso 1: Generación del Token
+
+ Inicialmente se debe enlazar con la plataforma web, para esto se debe hacer los siguiente:
+ 
+ - Crear una cuenta gratuita en Comet ML https://www.comet.com/site/
+ - Obtener la API Key desde la plataforma.
+ - Ubicar esta API Key en el archivo Comet_logger.py.
+ - Definir el nombre del proyecto en Project_name y el nombre de usuario en Workspace.
+
+ ## Paso 2: Definir las Métricas y Parámetros
+
+ Las métricas que se registrarán durante el entrenamiento del modelo se configuran en el archivo train.py mediante self.experiment.log_metric. Las métricas son:
+ 
+ - Train y val loss
+ - Train y val Accuracy
+ - Train y val Precisión
+ - Train y val Recall
+
+ ## Paso 3: Iniciar el Entrenamiento
+
+ Abrir una terminal o línea de comandos en la carpeta donde se encuentra el archivo main_comet.py.
+
+ Ejecuta el siguiente comando: 
+ 
+ -	Python main_comet.py
+
+La terminal generará un enlace que redirige a la interfaz web de Comet ML, donde podrás visualizar el experimento en tiempo real.
+ 
+## Interfaz web Comet ml
+
+Comet ML proporciona una interfaz interactiva donde se pueden analizar los resultados del entrenamiento.
+- Metrics: Visualización de métricas registradas.
+- Hyperparameters: Listado de hiperparámetros utilizados en el entrenamiento.
+- Confusion Matrix: Matriz de confusión generada.
+- Graphics: Imágenes y gráficos guardados durante el proceso.
+
+La pestaña panels presenta todas las gráficas interactivas donde se puede observar y analizar el comportamiento de las métricas registradas en todo el proceso del entrenamiento tal como se muestra en la siguiente imagen:
+
+Una de las ventajas de Comet ml es que permite agregar panels personalizados donde se puede visualizar las métricas de preferencia del usuario como se ve en la siguiente imagen:
+
+Esto es útil si se quiere visualizar y/o comparar métricas simultaneas como la pérdida del conjunto de entrenamiento y validación.
+
 
 # Integrantes del proyecto
 
