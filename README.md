@@ -21,7 +21,8 @@ El repositorio incluye diversos scripts para cada una de las funciones de las pl
     - [ml_flow/evaluate.py](#ml_flow/evaluate-py)
     - [config.py](#config-py)
     - [data.py](#data-py)
-    - [model.py](#model-py) 
+    - [model.py](#model-py)
+- [Requerimientos para usar la herramienta de detección](#requerimientos-para-usar-la-herramienta-de-detección)
   
 # Introducción
 ## Phishing
@@ -114,6 +115,21 @@ Este script contiene la función para cargar los datos desde Hugging Face, de ta
 ## model.py
 
 Este script contiene la función para crear el modelo, en este caso una Red Neuronal Artificial con dos capas ocultas. Al separar esta funcionalidad, se garantiza un mejor desacoplamiento del sistema, permitiendo reutilizar el modelo en diferentes partes de la aplicación.
+
+# Requerimientos para usar la Herramienta para la generación de recetas de cocina
+
+Para ejecutar correctamente Herramienta para la generación de recetas de cocina, siga los siguientes pasos:
+
+1. Se debe clonar la información del repositorio uao-neumonia  el cual se encuentra en el siguiente enlace https://github.com/UAOFranciscoRivera901/uao-mlflow
+2. Asegúrate de tener Python instalado en tu ordenador. Se recomienda usar la versión Python 3.12.2
+3. crear y configurar un entorno virtual: Puede craer su entorno virtual desde la consola del sistema o puede usar VS Code. Nota: Un entorno virtual es un espacio aislado dentro de tu sistema donde puedes instalar bibliotecas y dependencias necesarias para un proyecto, sin afectar el resto del sistema ni otras aplicaciones.
+- Si desea usar VS Code estas son las instrucciones a seguir:
+- Inicia Visual Studio Code desde el directorio donde has clonado el repositorio del proyecto.
+- Puedes abrir la barra de comandos presionando ctrl + Shift + P.
+- Escribe y busca la opción "Python: Crear un entorno virtual" para crear el entorno virtual.
+- Selecciona la opción "Crear entorno virtual (.venv)
+- Asegúrate de elegir la versión Python  3.12.2
+- No olvides seleccionar el archivo requirements.txt. Este archivo contiene todas las bibliotecas y dependencias necesarias para el funcionamiento correcto del proyecto.
 
 # Integrantes del proyecto
 
