@@ -22,7 +22,10 @@ El repositorio incluye diversos scripts para cada una de las funciones de las pl
     - [config.py](#config-py)
     - [data.py](#data-py)
     - [model.py](#model-py)
-- [Requerimientos para usar la herramienta de detección](#requerimientos-para-usar-la-herramienta-de-detección)
+ - [Requerimientos para usar el monitoreo del modelo](#requerimientos-para-usar-el-monitoreo-del-modelo)
+ - [Integrantes del proyecto](#Integrantes-del-proyecto)
+
+
   
 # Introducción
 ## Phishing
@@ -116,9 +119,9 @@ Este script contiene la función para cargar los datos desde Hugging Face, de ta
 
 Este script contiene la función para crear el modelo, en este caso una Red Neuronal Artificial con dos capas ocultas. Al separar esta funcionalidad, se garantiza un mejor desacoplamiento del sistema, permitiendo reutilizar el modelo en diferentes partes de la aplicación.
 
-# Requerimientos para usar la Herramienta para la generación de recetas de cocina
+# Requerimientos para usar el monitoreo del modelo
 
-Para ejecutar correctamente Herramienta para la generación de recetas de cocina, siga los siguientes pasos:
+Para ejecutar correctamente el monitoreo del modelo de un modelo de red neuronal, siga los siguientes pasos:
 
 1. Se debe clonar la información del repositorio uao-neumonia  el cual se encuentra en el siguiente enlace https://github.com/UAOFranciscoRivera901/uao-mlflow
 2. Asegúrate de tener Python instalado en tu ordenador. Se recomienda usar la versión Python 3.12.2
@@ -130,6 +133,8 @@ Para ejecutar correctamente Herramienta para la generación de recetas de cocina
 - Selecciona la opción "Crear entorno virtual (.venv)
 - Asegúrate de elegir la versión Python  3.12.2
 - No olvides seleccionar el archivo requirements.txt. Este archivo contiene todas las bibliotecas y dependencias necesarias para el funcionamiento correcto del proyecto.
+  
+# Uso de las plataformas especializadas en seguimiento y optimización de modelos de machine learning
 
 # Integrantes del proyecto
 
