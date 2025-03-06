@@ -25,6 +25,7 @@ El repositorio incluye diversos scripts para cada una de las funciones de las pl
  - [Requerimientos para usar el monitoreo del modelo](#requerimientos-para-usar-el-monitoreo-del-modelo)
     - [Comet ML](#Comet-ML)
     - [MLflow](#MLflow])
+-  [Dockerizacion](#dockerización)
  - [Integrantes del proyecto](#Integrantes-del-proyecto)
 
 
@@ -248,6 +249,25 @@ Bibliografía
 - https://www.comet.com/site/
 - https://www.toolify.ai/es/ai-news-es/una-gua-para-ingenieros-de-ia-sobre-el-monitoreo-de-modelos-con-la-plataforma-comet-ml-1966252
 - https://www.incibe.es/aprendeciberseguridad/phishing
+
+# Dockerización
+
+Este proyecto se puede ejecutar dentro de un contenedor Docker utilizando `docker` y `docker-compose`.
+
+## Requisitos Previos
+
+- Tener instalado [Docker](https://www.docker.com/get-started).
+- Tener instalado [Docker Compose](https://docs.docker.com/compose/).
+
+## Construcción de la imagen de Docker
+
+Primero, necesitas construir la imagen de Docker para el proyecto. Ejecuta el siguiente comando en la raíz del proyecto (donde se encuentra el archivo `Dockerfile`):
+
+```bash
+docker build -t uao-mlflow .
+docker compose up
+```
+El dockercompose ejecuta los dos modelos y la interfaz grafica de mlflow
 
 # Integrantes del proyecto
 
