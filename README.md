@@ -23,6 +23,8 @@ El repositorio incluye diversos scripts para cada una de las funciones de las pl
     - [data.py](#data-py)
     - [model.py](#model-py)
  - [Requerimientos para usar el monitoreo del modelo](#requerimientos-para-usar-el-monitoreo-del-modelo)
+    - [Comet ML](#Comet-ML)
+    - [MLflow](#MLflow])
  - [Integrantes del proyecto](#Integrantes-del-proyecto)
 
 
@@ -187,6 +189,65 @@ Una de las ventajas de Comet ml es que permite agregar panels personalizados don
 ![imagen 3](imagenes/opcion.PNG)
 
 Esto es útil si se quiere visualizar y/o comparar métricas simultaneas como la pérdida del conjunto de entrenamiento y validación.
+
+## ML flow
+
+MLflow es una herramienta open source diseñada para gestionar el ciclo de vida de los modelos de Machine Learning (ML). Su principal objetivo es facilitar el seguimiento, la reproducción y la implementación de modelos en producción.
+
+dentro de los aspectos principales se destacan
+
+-	Tracking:  Registra los resultados y parámetros del modelo 
+-	Projects:  Permite que empaquetar el código para que sea reproducible
+-	Models: gestiona el versionamiento del modelo, así como ponerlo en producción en modo de end point.
+
+Para iniciar el experimento (entrenamiento del modelo) siga los siguientes pasos:
+
+ ## Paso 1: Definir las métricas y/o parámetros
+
+ Se establecen las métricas que se registraran durante el enteramiento en callbacks.py por medio de mlflow.log_metric; las métricas son:
+ 
+- Train y val loss
+- Train y val Accuracy
+- Train y val Precisión
+- Train y val Recall
+
+ ## Paso 2: Iniciar el entrenamiento
+ 
+Una de las ventajas de MLflow es que no se debe crear una cuenta de acceso para usar la plataforma, el enlace, registro de resultados y parámetros se hace en train.py
+
+Para iniciar el entrenamiento primero debe abrir una terminal o línea de comandos en la carpeta donde se encuentra el archivo main_ml_flow.py
+
+Escribir el siguiente comando y presionar Enter:
+
+-	Python main_ml_flow.py
+
+Esto iniciara el experiment
+
+## Interfaz web MLflow
+
+Para ver los resultados del enteramiento se debe ejecutar el servidor de MLflow por medio del comando MLflow. ui
+
+En el terminal se indica un URL que redirige a la interfaz web de MLflow
+
+En la interfaz se puede observar y analizar el comportamiento de las métricas registradas en todo el proceso del entrenamiento tal como se muestra en la siguiente imagen:
+
+![imagen 4](imagenes/metricss.PNG)
+
+También se observan los resultados registrados como se indica en la siguiente imagen
+
+![imagen 5](imagenes/registro.PNG)
+
+## Paso 3: Cerrar la aplicación
+
+Para cerrar la aplicación, simplemente debe cerrar la pestaña del navegador.
+
+En la terminal, presionar Ctrl + C para detener la ejecución.
+
+Bibliografía
+- https://anderfernandez.com/blog/tutorial-mlflow-completo/
+- https://www.comet.com/site/
+- https://www.toolify.ai/es/ai-news-es/una-gua-para-ingenieros-de-ia-sobre-el-monitoreo-de-modelos-con-la-plataforma-comet-ml-1966252
+- https://www.incibe.es/aprendeciberseguridad/phishing
 
 # Integrantes del proyecto
 
