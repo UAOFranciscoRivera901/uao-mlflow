@@ -1,11 +1,10 @@
 import mlflow
-import psutil
 from mlflow.models import infer_signature
 from src.data import cargar_datos
-from src.model import crear_modelo
+from src.model import MODELOS
 from src.ml_flow.callbacks import MLflowCallback
 from src.config import PARAMS
-from src.ml_flow.evaluate import evaluar_modelo, guardar_matriz_confusion
+from src.ml_flow.evaluate import calcular_metricas, guardar_matriz_confusion
 
 def entrenar_modelo(modelo, X_train, y_train, X_test, y_test):
     """Entrena el modelo y registra métricas en MLflow."""
@@ -22,27 +21,42 @@ def main():
     X_train, X_test, y_train, y_test = cargar_datos()
     
     mlflow.set_experiment("phishing-detections")
-    with mlflow.start_run():
-        mlflow.log_params(PARAMS)
-        mlflow.log_metric("cpu_usage", psutil.cpu_percent())
-        mlflow.log_metric("memory_usage", psutil.virtual_memory().percent)
-        
-        modelo = crear_modelo(
-            neuronas=PARAMS["neuronas"],
-            activacion=PARAMS["activacion"],
-            optimizador=PARAMS["optimizador"],
-            input_dim=X_train.shape[1]
-        )
-        
-        entrenar_modelo(modelo, X_train, y_train, X_test, y_test)
-        
-        accuracy, cm = evaluar_modelo(modelo, X_test, y_test)
-        mlflow.log_metric("accuracy", accuracy)
-        
-        guardar_matriz_confusion(cm)
-        
-        signature = infer_signature(X_train, modelo.predict(X_train))
-        mlflow.tensorflow.log_model(modelo, "models/modelo_keras", signature=signature)
+
+    for nombre_modelo, parametros, modelo in MODELOS:
+        with mlflow.start_run(run_name = nombre_modelo):
+            # Establecer los parametros de cada modelo
+            mlflow.log_params(parametros)
+            modelo.set_params(**parametros)
+            
+            # Entrenamiento del modelo
+            modelo.fit(X_train, y_train)
+
+            # Prediccion del modelo entrenado
+            y_pred = modelo.predict(X_test)
+            
+            # Calcular las diferentes metricas
+            accuracy, precision, f1, recall, cm = calcular_metricas(y_test, y_pred)
+
+            # Establecer las metricas en MLflow
+            mlflow.log_metrics({
+                'accuracy': accuracy,
+                'precision': precision,
+                'f1': f1,
+                'recall': recall
+            })
+
+            # Almacenar la matriz de confusion
+            guardar_matriz_confusion(cm, nombre_modelo)
+
+            # Registrar el modelo
+            signature = infer_signature(X_train, modelo.predict(X_train))
+            mlflow.sklearn.log_model(
+                sk_model = modelo,
+                artifact_path = "phising_model",
+                signature = signature,
+                input_example = X_train,
+                registered_model_name = nombre_modelo
+            )
 
 if __name__ == "__main__":
     main()
