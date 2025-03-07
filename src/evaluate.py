@@ -1,4 +1,3 @@
-import comet_ml
 import seaborn as sns
 import matplotlib.pyplot as plt
 import mlflow
@@ -22,13 +21,6 @@ def calcular_metricas(y_test, y_pred):
     recall = recall_score(y_test, y_pred)
     cm = confusion_matrix(y_test, y_pred)
     return accuracy, precision, f1, recall, cm
-
-def evaluar_modelo(modelo, X_test, y_test):
-    """Evalúa el modelo y genera métricas."""
-    y_pred = (modelo.predict(X_test) > 0.5).astype(int)
-    accuracy = accuracy_score(y_test, y_pred)
-    cm = confusion_matrix(y_test, y_pred)
-    return accuracy, cm
 
 def guardar_matriz_confusion(cm, nombre_modelo):
     """
