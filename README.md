@@ -27,9 +27,11 @@ El repositorio incluye diversos scripts para cada una de las funciones de las pl
     - [ml_flow/ml_flow_train.py](#ml_flow/ml_flow_train.py)
     - [data.py](#data-py)
     - [evaluate.py](#evaluate-py)
- - [Requerimientos para usar el monitoreo del modelo](#requerimientos-para-usar-el-monitoreo-del-modelo)
+- [Requerimientos para usar el monitoreo del modelo](#requerimientos-para-usar-el-monitoreo-del-modelo)
     - [Comet ML](#Comet-ML)
     - [MLflow](#MLflow)
+- [Hallazgos](#Hallazgos).
+- [Conclusiones](#Conclusiones).
 -  [Dockerizacion](#dockerización)
  - [Integrantes del proyecto](#Integrantes-del-proyecto)
 
@@ -240,8 +242,6 @@ Para iniciar el experimento (entrenamiento del modelo) siga los siguientes pasos
  - Recall
  - Precision
  - F1-score
- - Loss-Train
- - Loss-Val
 
  ## Paso 2: Iniciar el entrenamiento
  
