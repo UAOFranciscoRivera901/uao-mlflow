@@ -1,4 +1,7 @@
 #!/bin/bash
+# Instalar MLflow
+pip install mlflow==2.20.3
+
 # Start MLflow UI in the foreground
 mlflow ui --host 0.0.0.0 --port 5000 &
 

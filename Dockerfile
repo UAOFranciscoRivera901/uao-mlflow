@@ -1,6 +1,9 @@
 # Usar la imagen oficial de Python 3.12.2
 FROM python:3.12.2-slim
 
+# Install dos2unix
+RUN apt-get update && apt-get install -y dos2unix
+
 # Establecer el directorio de trabajo dentro del contenedor
 WORKDIR /app
 
@@ -19,6 +22,8 @@ COPY . /app/
 
 
 RUN chmod +x /app/entrypoint.sh
+RUN dos2unix entrypoint.sh
+
 # # Exponer el puerto de MLflow
 EXPOSE 5000
 # Set up MLflow tracking server
