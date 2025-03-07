@@ -178,17 +178,19 @@ Comet ML es una plataforma diseñada para rastrear, comparar y optimizar modelos
  
  - Crear una cuenta gratuita en Comet ML https://www.comet.com/site/
  - Obtener la API Key desde la plataforma.
- - Ubicar esta API Key en el archivo Comet_logger.py.
- - Definir el nombre del proyecto en Project_name y el nombre de usuario en Workspace.
+ - Ubicar esta API Key en el archivo config_comet.py.
+ - En el mismo archivo definir el nombre del proyecto y el nombre de usuario en Workspace.
 
  ## Paso 2: Definir las Métricas y Parámetros
 
- Las métricas que se registrarán durante el entrenamiento del modelo se configuran en el archivo train.py mediante self.experiment.log_metric. Las métricas son:
+ Las métricas que se registrarán durante el entrenamiento del modelo se configuran en el archivo train_comet.py mediante experiment.log_metric. Las métricas son:
  
- - Train y val loss
- - Train y val Accuracy
- - Train y val Precisión
- - Train y val Recall
+ - Accuracy
+ - Recall
+ - Precision
+ - F1-score
+ - Loss-Train
+ - Loss-Val
 
  ## Paso 3: Iniciar el Entrenamiento
 
@@ -198,7 +200,7 @@ Comet ML es una plataforma diseñada para rastrear, comparar y optimizar modelos
  
  -	Python main_comet.py
 
-La terminal generará un enlace que redirige a la interfaz web de Comet ML, donde podrás visualizar el experimento en tiempo real.
+La terminal generará un enlace que redirige a la interfaz web de Comet ML, donde podrás visualizar el experimento de los 3 modelos  en tiempo real.
  
 ## Interfaz web Comet ml
 
@@ -232,16 +234,18 @@ Para iniciar el experimento (entrenamiento del modelo) siga los siguientes pasos
 
  ## Paso 1: Definir las métricas y/o parámetros
 
- Se establecen las métricas que se registraran durante el enteramiento en callbacks.py por medio de mlflow.log_metric; las métricas son:
+ Se establecen las métricas que se registraran durante el enteramiento en ml_flow_train por medio de mlflow.log_metric; las métricas son:
  
-- Train y val loss
-- Train y val Accuracy
-- Train y val Precisión
-- Train y val Recall
+ - Accuracy
+ - Recall
+ - Precision
+ - F1-score
+ - Loss-Train
+ - Loss-Val
 
  ## Paso 2: Iniciar el entrenamiento
  
-Una de las ventajas de MLflow es que no se debe crear una cuenta de acceso para usar la plataforma, el enlace, registro de resultados y parámetros se hace en train.py
+Una de las ventajas de MLflow es que no se debe crear una cuenta de acceso para usar la plataforma, el enlace, registro de resultados y parámetros se hace en  ml_flow_train.
 
 Para iniciar el entrenamiento primero debe abrir una terminal o línea de comandos en la carpeta donde se encuentra el archivo main_ml_flow.py
 
@@ -255,7 +259,7 @@ Esto iniciara el experiment
 
 Para ver los resultados del enteramiento se debe ejecutar el servidor de MLflow por medio del comando MLflow. ui
 
-En el terminal se indica un URL que redirige a la interfaz web de MLflow
+En el terminal se indica un URL que redirige a la interfaz web de MLflow donde se podra ver el registro de los 3 modelos.
 
 En la interfaz se puede observar y analizar el comportamiento de las métricas registradas en todo el proceso del entrenamiento tal como se muestra en la siguiente imagen:
 
@@ -271,11 +275,6 @@ Para cerrar la aplicación, simplemente debe cerrar la pestaña del navegador.
 
 En la terminal, presionar Ctrl + C para detener la ejecución.
 
-Bibliografía
-- https://anderfernandez.com/blog/tutorial-mlflow-completo/
-- https://www.comet.com/site/
-- https://www.toolify.ai/es/ai-news-es/una-gua-para-ingenieros-de-ia-sobre-el-monitoreo-de-modelos-con-la-plataforma-comet-ml-1966252
-- https://www.incibe.es/aprendeciberseguridad/phishing
 
 # Hallazgos
 ## En mlFlow
@@ -317,6 +316,10 @@ Para un análisis más robusto, lo ideal es combinar ambas herramientas: usar Co
 
 # Dockerización
 
+La Dockerización es el proceso de empaquetar una aplicación junto con todas sus dependencias, configuraciones y bibliotecas necesarias en un contenedor Docker. Esto permite que la aplicación se ejecute de manera consistente y reproducible en cualquier entorno, sin importar el sistema operativo o la configuración de la máquina en la que se ejecute.
+
+Docker File es un archivo de texto que contiene una serie de instrucciones para construir una imagen de Docker,este archivo debe estar dentro de la raíz del proyecto
+
 Este proyecto se puede ejecutar dentro de un contenedor Docker utilizando `docker` y `docker-compose`.
 
 ## Requisitos Previos
@@ -333,6 +336,14 @@ docker build -t uao-mlflow .
 docker compose up
 ```
 El dockercompose ejecuta los dos modelos y la interfaz grafica de mlflow
+
+
+Bibliografía
+- https://anderfernandez.com/blog/tutorial-mlflow-completo/
+- https://www.comet.com/site/
+- https://www.toolify.ai/es/ai-news-es/una-gua-para-ingenieros-de-ia-sobre-el-monitoreo-de-modelos-con-la-plataforma-comet-ml-1966252
+- https://www.incibe.es/aprendeciberseguridad/phishing
+- https://www.youtube.com/watch?v=6ngxBkx05Fs
 
 # Integrantes del proyecto
 
