@@ -1,20 +1,8 @@
 import mlflow
 from mlflow.models import infer_signature
 from src.data import cargar_datos
-from src.model import MODELOS
-from src.ml_flow.callbacks import MLflowCallback
-from src.config import PARAMS
-from src.ml_flow.evaluate import calcular_metricas, guardar_matriz_confusion
-
-def entrenar_modelo(modelo, X_train, y_train, X_test, y_test):
-    """Entrena el modelo y registra métricas en MLflow."""
-    modelo.fit(
-        X_train, y_train,
-        epochs=PARAMS["epochs"],
-        batch_size=PARAMS["batch_size"],
-        validation_data=(X_test, y_test),
-        callbacks=[MLflowCallback()]
-    )
+from src.ml_flow.ml_flow_model import MODELOS
+from src.evaluate import calcular_metricas, guardar_matriz_confusion
 
 def main():
     """Función principal que ejecuta el pipeline de entrenamiento y evaluación."""

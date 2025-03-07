@@ -1,3 +1,4 @@
+import comet_ml
 import seaborn as sns
 import matplotlib.pyplot as plt
 import mlflow
