@@ -257,7 +257,7 @@ Esto iniciara el experiment
 
 ## Interfaz web MLflow
 
-Para ver los resultados del enteramiento se debe ejecutar el servidor de MLflow por medio del comando MLflow. ui
+Para ver los resultados del enteramiento se debe ejecutar el servidor de MLflow por medio del comando mlflow ui
 
 En el terminal se indica un URL que redirige a la interfaz web de MLflow donde se podra ver el registro de los 3 modelos.
 
