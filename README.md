@@ -11,20 +11,25 @@ El repositorio incluye diversos scripts para cada una de las funciones de las pl
 
 # Tabla de contenido
 - [Introducción](#introducción)
- - [Phishing](#Phishing)
- - [Dataset](#Dataset)
+    - [Phishing](#Phishing)
+    - [Dataset](#Dataset)
+- [Modelos de clasificación seleccionados](#Modelos-de-clasificación-seleccionados)
+    - [Red Neuronal Multicapa (MLP)](#Red-Neuronal-Multicapa-(MLP))
+    - [Regresión Logística](#Regresión-Logística)
+    - [Árbol de decisión](#Árbol-de-decisión)
+    - [Bosque aleatorio](#Bosque-aleatorio)
 - [Estructura del repositorio](#Estructura-del-repositorio)
 - [Archivos del repositorio](#archivos-del-repositorio)
-    - [comet/comet_logger.py](#comet/comet_logger-py)
-    - [comet/train.py](#comet/train-py) 
-    - [ml_flow/callbacks.py](#ml_flow/callbacks-py)  
-    - [ml_flow/evaluate.py](#ml_flow/evaluate-py)
-    - [config.py](#config-py)
+    - [comet/config_comet.py](#comet/config_comet.py)
+    - [comet/models_commet.py](#comet/models_commet.py) 
+    - [comet/train_comet.py](#comet/train_comet.py)  
+    - [ml_flow/ml_flow_model.py](#ml_flow/ml_flow_model.py)
+    - [ml_flow/ml_flow_train.py](#ml_flow/ml_flow_train.py)
     - [data.py](#data-py)
-    - [model.py](#model-py)
+    - [evaluate.py](#evaluate-py)
  - [Requerimientos para usar el monitoreo del modelo](#requerimientos-para-usar-el-monitoreo-del-modelo)
     - [Comet ML](#Comet-ML)
-    - [MLflow](#MLflow])
+    - [MLflow](#MLflow)
 -  [Dockerizacion](#dockerización)
  - [Integrantes del proyecto](#Integrantes-del-proyecto)
 
@@ -54,7 +59,9 @@ Hablando del tipo de datos de las características se observa que la mayoría de
 
 Por último y no menos importante, se indica que el dataset está balanceado ya que contiene el 50% de los datos pertenecientes al estado legítimo y la otra mitad de los datos corresponden a phising.
 
-## Modelo clasificación de URLs
+# Modelos de clasificación seleccionados
+
+## Red Neuronal Multicapa (MLP)
 
 El modelo de clasificación elegido fue una red neuronal multicapa (MLP) debido a su capacidad para aprender patrones complejos y generalizar el conocimiento en datos de alta dimensión. Su adaptabilidad le permite ajustarse a cambios en la información, mejorando su rendimiento frente a nuevas amenazas de phishing. Además, su habilidad para manejar grandes volúmenes de datos contribuye a reducir el número de falsas detecciones, asegurando un sistema robusto y eficiente en la identificación de URLs maliciosas.
 
@@ -70,6 +77,24 @@ Los parametros utilizados son:
 - Epochs: 10
 - Batch size: 32
 
+## Regresión Logística
+
+Es un método de regresión útil para resolver problemas de clasificación binaria, es un algoritmo de clasificación que se utiliza para predecir la probabilidad de una variable dependiente categórica. En la Regresión Logística, la variable dependiente es una variable binaria que contiene datos codificados como 0 o 1.
+
+La Regresión Logística es uno de los algoritmos de Machine Learning más simples y más utilizados para la clasificación de dos clases. Describe y estima la relación entre una variable binaria dependiente y las variables independientes. Este modelo logístico binario se utiliza para estimar la probabilidad de una respuesta binaria basada en una o más variables predictoras o independientes. Permite decir que la presencia de un factor de riesgo aumenta la probabilidad de un resultado dado un porcentaje específico.
+
+## Árbol de decisión
+
+Es un algoritmo de aprendizaje supervisado no paramétrico, que se utiliza tanto para tareas de clasificación como de regresión. Tiene una estructura jerárquica de árbol, que consta de un nodo raíz, ramas, nodos internos y nodos hoja.
+
+El aprendizaje de árboles de decisión emplea una estrategia de divide y vencerás realizando una búsqueda para identificar los puntos de división óptimos dentro de un árbol. Este proceso de división se repite de forma descendente y recursiva hasta que todos o la mayoría de los registros se hayan clasificado con etiquetas de clase específicas. Para reducir la complejidad y evitar el sobreajuste del modelo, se suele emplear la poda, se trata de un proceso que elimina las ramas que se dividen en características con poca importancia.
+
+## Bosque aleatorio
+
+Es un algoritmo de machine learning de uso común que combina la salida de múltiples árboles de decisión para llegar a un único resultado. Su facilidad de uso y flexibilidad han impulsado su adopción, ya que maneja tanto problemas de clasificación como de regresión.
+
+El bosque aleatorio utiliza la aleatoriedad de las características para crear un bosque no correlacionado de árboles de decisión, generando un subconjunto aleatorio de características, lo que garantiza una baja correlación entre los árboles de decisión. Esta es una diferencia clave entre los árboles de decisión y los bosques aleatorios. Mientras que los árboles de decisión consideran todas las posibles divisiones de características, los bosques aleatorios solo seleccionan un subconjunto de esas características.
+
 # Estructura del repositorio
 
 En este repositorio, los archivos han sido organizados de manera estructurada para diferenciar claramente las implementaciones destinadas a las plataformas Comet-ML y MLflow. Esta división permite una mejor gestión del monitoreo y experimentación del modelo, facilitando la integración con cada plataforma según sus características y funcionalidades específicas.
@@ -83,9 +108,11 @@ A nivel general, la estructura del proyecto es la siguiente:
     - comet/ Almacena toda la lógica relacionada con la plataforma Comet-ML.
     - ml_flow/ Almacena toda la lógica relacionada con la plataforma MLflow.
     - Scripts .py que contienen funcionalidad generica para ambas plataformas.
+- test/ Almacena las pruebas unitarias del proyecto que se ejecutan con pytest.
 
 2. Archivos en la raíz del proyecto:
 - gitignore: Define los archivos y carpetas que deben ser ignorados en el control de versiones con Git.
+- Dockerfile: Especifica las instrucciones para construir el contenedor Docker del proyecto.
 - main_comet.py: Archivo principal que sirve como punto de entrada para ejecutar Comet-ML.
 - main_ml_flow.py: Archivo principal que sirve como punto de entrada para ejecutar MLflow.
 - README.md: Documento con información detallada sobre el uso y configuración del proyecto.
@@ -94,33 +121,33 @@ A nivel general, la estructura del proyecto es la siguiente:
 
 # Archivos del repositorio
 
-## comet/comet_logger.py
+## comet/config_comet.py
 
-Este script maneja la configuración inicial de Comet-ML para iniciar el experimento que requiere datos como api_key, project_name y workspace.
+Este script maneja la configuración inicial de Comet-ML para iniciar el experimento que requiere datos como api_key, project_name y workspace, además contiene los parámetros de los modelos que se van a visualizar en Comet-ML. Centralizar la configuración en este archivo facilita la modificación y mantenimiento del sistema sin afectar otros módulos.
 
-## comet/train.py
+## comet/models_commet.py
 
-Este script contiene toda la parametrización necesaria y requerida por Comet-ML para poder iniciar con el experimento, estableciendo las métricas que se harán seguimiento, carga de datos, carga del modelo y Callbacks para realizar los cálculos de las métricas durante el entrenamiento del modelo a través del tiempo y poder realizar las gráficas.
+Este script contiene los modelos que serán visibles en Comet-ML, dichos modelos son: Regresión Logística, Bosque aleatorio y una Red Neuronal Artificial. Al separar esta funcionalidad, se garantiza un mejor desacoplamiento del sistema, permitiendo reutilizar los modelos en diferentes partes de la aplicación.
 
-## ml_flow/callbacks.py
+## comet/train_comet.py
 
-Este script establece las métricas como accuracy y precisión que se harán seguimiento en MLflow después de cada época.
+Este script contiene toda la parametrización necesaria y requerida por Comet-ML para poder iniciar con el experimento, estableciendo las métricas que se harán seguimiento, carga de datos, y carga de los modelos para realizar los cálculos de las métricas durante el entrenamiento del modelo a través del tiempo y poder realizar las gráficas.
 
-## ml_flow/evaluate.py
+## ml_flow/ml_flow_model.py
 
-Este script contiene funciones para evaluar el modelo, calcular las métricas y generar la matriz de confusión.
+Este script contiene los modelos que serán visibles en MLflow, dichos modelos son: Regresión Logística, Árbol de decisión y Bosque aleatorio. Al separar esta funcionalidad, se garantiza un mejor desacoplamiento del sistema, permitiendo reutilizar los modelos en diferentes partes de la aplicación.
 
-## config.py
+## ml_flow/ml_flow_train.py
 
-Este script aloja las credenciales para acceder a Comet-ML, además de tener los parámetros de la Red Neuronal Artificial tales como cantidad de neuronas, función de activación, optimizador, etc. Centralizar la configuración en este archivo facilita la modificación y mantenimiento del sistema sin afectar otros módulos.
+Este script contiene toda la parametrización necesaria y requerida por MLflow para poder iniciar con el experimento, estableciendo las métricas que se harán seguimiento, carga de datos, y carga de los modelos para realizar los cálculos de las métricas durante el entrenamiento del modelo a través del tiempo y poder realizar las gráficas.
 
 ## data.py
 
 Este script contiene la función para cargar los datos desde Hugging Face, de tal manera que separa los datos de entrenamiento y de prueba. Al tener este archivo con una única responsabilidad, cuando sea necesario cambiar la fuente de datos, solo se necesitaría modificar este archivo.
 
-## model.py
+## evaluate.py
 
-Este script contiene la función para crear el modelo, en este caso una Red Neuronal Artificial con dos capas ocultas. Al separar esta funcionalidad, se garantiza un mejor desacoplamiento del sistema, permitiendo reutilizar el modelo en diferentes partes de la aplicación.
+Este script contiene funciones para evaluar el modelo, calcular las métricas y generar la matriz de confusión. Estas funcionalidades se centralizan en este script, ya que son varios modelos que se deben evaluar tanto en Comet-ML como MLflow.
 
 # Requerimientos para usar el monitoreo del modelo
 
