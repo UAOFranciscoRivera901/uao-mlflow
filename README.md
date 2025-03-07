@@ -254,26 +254,26 @@ Bibliografía
 ## En mlFlow
 Los resultados obtenidos en MLflow muestran que el Bosque Aleatorio fue el modelo con mejor rendimiento general, logrando una precisión (accuracy) de 0.96, seguido por el Árbol de Decisión con 0.942, y finalmente la Regresión Logística con 0.929. Además, el F1-score, que balancea precisión y recall, también fue superior en el Bosque Aleatorio (0.961) en comparación con los otros modelos. Esto indica que su capacidad de clasificación es más equilibrada y robusta.
 
-![imagen 6](imagenes/mlFlow_compare_1.PNG)
+![imagen 6](imagenes/CmlFlow_compare_1.PNG)
 
-![imagen 7](imagenes/mlFlow_compare_2.PNG)
+![imagen 7](imagenes/CmlFlow_compare_2.PNG)
 
 En términos de precisión (precision), el Bosque Aleatorio obtuvo 0.959, mientras que el Árbol de Decisión y la Regresión Logística alcanzaron 0.945 y 0.942, respectivamente. Sin embargo, la métrica recall, que mide la capacidad del modelo para identificar correctamente las clases positivas, fue la más alta en el Bosque Aleatorio (0.962), lo que indica que es el modelo más efectivo para minimizar falsos negativos. La Regresión Logística mostró el menor recall (0.915), lo que significa que perdió más casos positivos en la clasificación.
 
-![imagen 8](imagenes/mlFlow_compare_3.PNG)
+![imagen 8](imagenes/CmlFlow_compare_3.PNG)
 
 ## En Comet
 En el análisis de los modelos, observamos que la Regresión Logística muestra una reducción progresiva de la pérdida en entrenamiento, comenzando en 0.65 y disminuyendo hasta 0.21 en las últimas iteraciones. La precisión se mantiene alrededor del 92.9%, mientras que el recall mejora gradualmente hasta 91.5%, lo que indica un buen balance en la predicción de clases positivas y negativas sin evidencias claras de sobreajuste.
 
-![imagen 9](imagenes/comet_1.PNG)
+![imagen 9](imagenes/Ccomet_1.PNG)
 
 El modelo de Random Forest presenta un comportamiento más estable que lo indicado inicialmente, con variaciones en la pérdida de entrenamiento entre 0.45 y 0.30. La precisión se mantiene alta en 95.9%, mientras que el recall alcanza 96.2%, lo que confirma su buen desempeño en la clasificación. Estos valores sugieren que el modelo logra una generalización adecuada, aunque podría beneficiarse de una optimización fina de hiperparámetros.
 
-![imagen 10](imagenes/comet_2.PNG)
+![imagen 10](imagenes/Ccomet_2.PNG)
 
 Por otro lado, la Red Neuronal demuestra una rápida reducción de la pérdida desde 0.80 hasta 0.10, lo que indica un aprendizaje agresivo. La precisión alcanza 94.2%, con fluctuaciones menores, mientras que el recall se mantiene en torno a 94.5%, lo que sugiere que el modelo tiene un buen desempeño en la identificación de casos positivos, aunque podría beneficiarse de técnicas de regularización para mejorar su estabilidad.
 
-![imagen 11](imagenes/comet_3.PNG)
+![imagen 11](imagenes/Ccomet_3.PNG)
 
 # Conclusiones
 El Random Forest se consolida como la mejor opción en términos de precisión (95.9%), recall (96.2%) y F1-score, destacándose por su equilibrio entre la detección de verdaderos positivos y la reducción de falsos positivos. Su capacidad de clasificación sigue siendo la más robusta, aunque presenta ligeras variaciones en la pérdida. Esto refuerza la efectividad de los métodos de ensamble sobre modelos más simples, como la Red Neuronal o la Regresión Logística, especialmente en problemas con relaciones no lineales en los datos.
